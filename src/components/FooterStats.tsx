@@ -14,21 +14,21 @@ export function FooterStats() {
         // For this demonstration, we use localStorage to persist fake counters
 
         // -- View Counter Logic --
-        const storedViews = localStorage.getItem("portfolio_views");
-        const hasVisited = sessionStorage.getItem("has_visited_portfolio");
+        const storedViews = localStorage.getItem("portfolio_views_v2");
+        const hasVisited = sessionStorage.getItem("has_visited_portfolio_v2");
 
         let currentViews = storedViews ? parseInt(storedViews, 10) : 0; // Starts at 0
 
         if (!hasVisited) {
             currentViews += 1;
-            localStorage.setItem("portfolio_views", currentViews.toString());
-            sessionStorage.setItem("has_visited_portfolio", "true");
+            localStorage.setItem("portfolio_views_v2", currentViews.toString());
+            sessionStorage.setItem("has_visited_portfolio_v2", "true");
         }
         setViews(currentViews);
 
         // -- Like Counter Logic --
-        const storedLikes = localStorage.getItem("portfolio_likes_count");
-        const userLiked = localStorage.getItem("portfolio_user_liked") === "true";
+        const storedLikes = localStorage.getItem("portfolio_likes_count_v2");
+        const userLiked = localStorage.getItem("portfolio_user_liked_v2") === "true";
 
         setLikes(storedLikes ? parseInt(storedLikes, 10) : 0);
         setIsLiked(userLiked);
@@ -39,14 +39,14 @@ export function FooterStats() {
         if (isLiked) {
             newLikes -= 1;
             setIsLiked(false);
-            localStorage.setItem("portfolio_user_liked", "false");
+            localStorage.setItem("portfolio_user_liked_v2", "false");
         } else {
             newLikes += 1;
             setIsLiked(true);
-            localStorage.setItem("portfolio_user_liked", "true");
+            localStorage.setItem("portfolio_user_liked_v2", "true");
         }
         setLikes(newLikes);
-        localStorage.setItem("portfolio_likes_count", newLikes.toString());
+        localStorage.setItem("portfolio_likes_count_v2", newLikes.toString());
     };
 
     return (
