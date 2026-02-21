@@ -12,6 +12,7 @@ const navItems = [
     { name: "Experience", id: "experience" },
     { name: "Projects", id: "projects" },
     { name: "Certifications", id: "certifications" },
+    { name: "Recommendations", id: "recommendations" },
 ];
 
 export function Navbar() {

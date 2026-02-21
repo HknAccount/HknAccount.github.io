@@ -26,15 +26,17 @@ export function Overview() {
                         </div>
 
                         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900">
-                            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-400">Alex Doe</span>
+                            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-400">Harikeshwaran</span>
+                            <br />
+                            <span className="text-4xl sm:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-400">PALANI</span>
                         </h1>
 
                         <h2 className="text-2xl sm:text-3xl font-medium text-gray-600">
-                            Full Stack Developer Building Modern Web Applications.
+                            Software & Systems Engineer.
                         </h2>
 
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0">
-                            I specialize in creating beautiful, responsive, and performant web applications using modern technologies like Next.js, React, and Tailwind CSS. Passionate about UX and clean, maintainable code.
+                            Specializing in formal verification, system design, and software engineering. Experienced in mapping out robust architectural solutions and implementing reliable systems across multiple domains.
                         </p>
 
                         <div className="flex items-center justify-center lg:justify-start space-x-4 pt-4">
@@ -43,15 +45,15 @@ export function Overview() {
                                 <ArrowDown className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
                             </a>
                             <div className="flex items-center space-x-4 ml-4">
-                                <a href="https://github.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-gray-900 transition-colors bg-white p-3 rounded-xl shadow-sm border border-gray-100">
+                                <a href="https://github.com/harikeshwaran" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-gray-900 transition-colors bg-white p-3 rounded-xl shadow-sm border border-gray-100">
                                     <span className="sr-only">GitHub</span>
                                     <Github className="w-5 h-5" />
                                 </a>
-                                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#0A66C2] transition-colors bg-white p-3 rounded-xl shadow-sm border border-gray-100">
+                                <a href="https://linkedin.com/in/harikeshwaran-palani" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#0A66C2] transition-colors bg-white p-3 rounded-xl shadow-sm border border-gray-100">
                                     <span className="sr-only">LinkedIn</span>
                                     <Linkedin className="w-5 h-5" />
                                 </a>
-                                <a href="mailto:hello@example.com" className="text-gray-400 hover:text-primary-500 transition-colors bg-white p-3 rounded-xl shadow-sm border border-gray-100">
+                                <a href="mailto:harikeshwaran.palani@example.com" className="text-gray-400 hover:text-primary-500 transition-colors bg-white p-3 rounded-xl shadow-sm border border-gray-100">
                                     <span className="sr-only">Email</span>
                                     <Mail className="w-5 h-5" />
                                 </a>

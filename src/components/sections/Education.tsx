@@ -6,18 +6,18 @@ import { GraduationCap, Calendar, MapPin } from "lucide-react";
 
 const educationData = [
     {
-        degree: "Master of Science in Computer Science",
-        institution: "Stanford University",
-        date: "2019 - 2021",
-        location: "Stanford, CA",
-        description: "Specialized in Artificial Intelligence and Human-Computer Interaction. Graduated with Honors."
+        degree: "MSc International Air Transport System Engineering and Design",
+        institution: "ENAC (No. 1 Civil Aviation School in Toulouse)",
+        date: "Sep 2023 - Oct 2025",
+        location: "Toulouse, France",
+        description: "Specialized in advanced air transport system engineering, design methodologies, and system architecture."
     },
     {
-        degree: "Bachelor of Science in Software Engineering",
-        institution: "University of California, Berkeley",
-        date: "2015 - 2019",
-        location: "Berkeley, CA",
-        description: "Core coursework in Data Structures, Algorithms, Web Development, and Database Systems."
+        degree: "Bachelor's degree in Aerospace Engineering",
+        institution: "Amrita Vishwa Vidyapeetham",
+        date: "Jul 2017 - Jun 2021",
+        location: "Coimbatore, India",
+        description: "Core coursework in aerodynamics, structural mechanics, flight dynamics, and aerospace systems."
     }
 ];
 

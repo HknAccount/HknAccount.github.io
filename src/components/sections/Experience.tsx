@@ -6,22 +6,22 @@ import { Briefcase, Calendar } from "lucide-react";
 
 const experienceData = [
     {
-        role: "Senior Full Stack Engineer",
-        company: "TechNexus Inc.",
-        date: "Jan 2022 - Present",
-        description: "Led a team of 4 engineers in migrating from a legacy monolith to a microservices architecture using Next.js and Node.js. Improved application performance by 40% and reduced server costs by 20%."
+        role: "End of Studies Internship",
+        company: "CEA-Nano-Innov Palaiseau, France",
+        date: "Mar 2025 - Sep 2025",
+        description: "Designed a Why3/WhyML module to abstract low-level C memory operations, applying a bottom-up formal verification approach. Modeled and formally verified complex data structures (e.g., memcached-style tail-queued linked lists) using invariants and contracts, with correctness proven via Z3, CVC5, and Alt-Ergo."
     },
     {
-        role: "Software Developer",
-        company: "Creative Digital Solutions",
-        date: "Mar 2019 - Dec 2021",
-        description: "Developed and maintained multiple client-facing React applications. Implemented responsive designs using Tailwind CSS and structured complex state management with Redux."
+        role: "Summer Intern",
+        company: "ENAC Toulouse, France",
+        date: "Jun 2024 - Aug 2024",
+        description: "Verified basic linear algebra functions in C using Frama-C with the WP (Weakest Precondition) plugin. Applied static analysis to prove functional correctness and detect potential runtime errors."
     },
     {
-        role: "Junior Web Developer",
-        company: "StartUp Launchpad",
-        date: "Jun 2018 - Feb 2019",
-        description: "Assisted in building custom WordPress themes and initial React prototypes. Collaborated closely with designers to ensure pixel-perfect implementations."
+        role: "Assistant Systems Engineer",
+        company: "TATA CONSULTANCY SERVICES Chennai, India",
+        date: "Nov 2021 - May 2023",
+        description: "System Engineer in Agile Scrum team – contributed to system design (HLD/LLD), developed Java source code, implemented software components, wrote unit tests using JUnit for verification and validation, ensuring code quality and correctness."
     }
 ];
 

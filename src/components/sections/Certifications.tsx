@@ -6,22 +6,34 @@ import { Award, CheckCircle } from "lucide-react";
 
 const certificationsData = [
     {
-        title: "AWS Certified Solutions Architect – Associate",
-        issuer: "Amazon Web Services",
-        date: "Aug 2023",
-        link: "https://aws.amazon.com/certification/"
+        title: "Microsoft Azure Fundamentals (AZ-900)",
+        issuer: "Microsoft",
+        date: "Obtained",
+        link: "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/"
     },
     {
-        title: "Meta Front-End Developer Professional Certificate",
-        issuer: "Coursera / Meta",
-        date: "Mar 2022",
-        link: "https://www.coursera.org/professional-certificates/meta-front-end-developer"
+        title: "Microsoft Azure AI Fundamentals (AI-900)",
+        issuer: "Microsoft",
+        date: "Obtained",
+        link: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/"
     },
     {
-        title: "Google Cloud Professional Developer",
-        issuer: "Google",
-        date: "Nov 2021",
-        link: "https://cloud.google.com/certification"
+        title: "HackerRank SQL (Basic)",
+        issuer: "HackerRank",
+        date: "Obtained",
+        link: "https://www.hackerrank.com/"
+    },
+    {
+        title: "HackerRank Java (Basic)",
+        issuer: "HackerRank",
+        date: "Obtained",
+        link: "https://www.hackerrank.com/"
+    },
+    {
+        title: "HackerRank Python (Basic)",
+        issuer: "HackerRank",
+        date: "Obtained",
+        link: "https://www.hackerrank.com/"
     }
 ];
 
