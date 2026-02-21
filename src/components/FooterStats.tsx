@@ -17,7 +17,7 @@ export function FooterStats() {
         const storedViews = localStorage.getItem("portfolio_views");
         const hasVisited = sessionStorage.getItem("has_visited_portfolio");
 
-        let currentViews = storedViews ? parseInt(storedViews, 10) : 1042; // arbitrary starting point
+        let currentViews = storedViews ? parseInt(storedViews, 10) : 0; // Starts at 0
 
         if (!hasVisited) {
             currentViews += 1;
@@ -30,7 +30,7 @@ export function FooterStats() {
         const storedLikes = localStorage.getItem("portfolio_likes_count");
         const userLiked = localStorage.getItem("portfolio_user_liked") === "true";
 
-        setLikes(storedLikes ? parseInt(storedLikes, 10) : 124);
+        setLikes(storedLikes ? parseInt(storedLikes, 10) : 0);
         setIsLiked(userLiked);
     }, []);
 
