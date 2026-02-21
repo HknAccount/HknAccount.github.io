@@ -7,7 +7,7 @@ import { GraduationCap, Calendar, MapPin } from "lucide-react";
 const educationData = [
     {
         degree: "MSc International Air Transport System Engineering and Design",
-        institution: "École de l'Aviation Civile (ENAC) - No. 1 Civil Aviation School in Toulouse",
+        institution: "École Nationale de l'Aviation Civile (ENAC) - No. 1 Civil Aviation School in Toulouse",
         date: "Sep 2023 - Oct 2025",
         location: "Toulouse, France",
         description: "Specialized in advanced air transport system engineering, design methodologies, and system architecture."
