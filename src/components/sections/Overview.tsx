@@ -1,58 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, Users, Heart, Edit3 } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 import { TestimonialCarousel } from "@/components/ui/TestimonialCarousel";
-import {
-  subscribeToRecommendations,
-  subscribeToVisitors,
-  subscribeToTestimonials,
-  incrementVisitors,
-  incrementRecommendations,
-} from "@/lib/firebase";
-import { getOrCreateFingerprint } from "@/lib/fingerprint";
-import confetti from "canvas-confetti";
 
 export function Overview() {
-    const [recommendationCount, setRecommendationCount] = useState(0);
-    const [visitorCount, setVisitorCount] = useState(0);
-    const [testimonialCount, setTestimonialCount] = useState(0);
-
-    useEffect(() => {
-        const fetchStats = async () => {
-            try {
-                const resViews = await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-views");
-                const dataViews = await resViews.json();
-                setVisitorCount(dataViews.count);
-
-                const resLikes = await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-likes");
-                const dataLikes = await resLikes.json();
-                setRecommendationCount(dataLikes.count);
-            } catch (err) {
-                console.error("Failed to fetch stats", err);
-            }
-        };
-        fetchStats();
-    }, []);
-
-    const handleLike = async () => {
-        try {
-            setRecommendationCount(prev => prev + 1);
-            await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-likes/up");
-            
-            // Trigger confetti
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#ef4444', '#ec4899', '#8b5cf6']
-            });
-        } catch (error) {
-            console.error("Error updating likes", error);
-        }
-    };
 
     return (
         <section id="overview" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden flex flex-col items-center">
@@ -106,25 +59,6 @@ export function Overview() {
                             Specializing in formal verification, system design, and software engineering. Experienced in mapping out robust architectural solutions and implementing reliable systems across multiple domains.
                         </p>
 
-                        {/* Firebase Stat Badges */}
-                        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 py-2">
-                            <div className="group relative inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full shadow-lg cursor-help text-sm font-medium">
-                                <Users className="w-4 h-4" />
-                                <span>{visitorCount.toLocaleString()} Visitors</span>
-                            </div>
-                            <button 
-                                onClick={handleLike}
-                                className="group relative inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-full shadow-lg cursor-pointer transform hover:scale-105 hover:shadow-xl hover:shadow-pink-500/20 active:scale-95 transition-all text-sm font-medium"
-                            >
-                                <Heart className="w-4 h-4 fill-white group-hover:animate-ping absolute inset-0 m-auto opacity-0 group-hover:opacity-30" />
-                                <Heart className="w-4 h-4 fill-white relative z-10" />
-                                <span className="relative z-10">{recommendationCount} Loves</span>
-                            </button>
-                            <div className="group relative inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-lg cursor-help text-sm font-medium">
-                                <Edit3 className="w-4 h-4" />
-                                <span>{testimonialCount} Recommendations</span>
-                            </div>
-                        </div>
 
                         <div className="flex items-center justify-center lg:justify-start space-x-4 pt-2">
                             <a href="#projects" className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-xl font-medium transition-colors shadow-lg shadow-primary-500/25 flex items-center group">
