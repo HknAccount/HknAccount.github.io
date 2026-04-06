@@ -21,28 +21,26 @@ export function Overview() {
     const [testimonialCount, setTestimonialCount] = useState(0);
 
     useEffect(() => {
-        // Track unique visitor
-        const hasVisited = localStorage.getItem("hasVisited");
-        if (!hasVisited) {
-            incrementVisitors().catch(() => {});
-            localStorage.setItem("hasVisited", "true");
-        }
+        const fetchStats = async () => {
+            try {
+                const resViews = await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-views");
+                const dataViews = await resViews.json();
+                setVisitorCount(dataViews.count);
 
-        const unsubscribeRecs = subscribeToRecommendations((count) => setRecommendationCount(count));
-        const unsubscribeVisons = subscribeToVisitors((count) => setVisitorCount(count));
-        const unsubscribeTests = subscribeToTestimonials((tests) => setTestimonialCount(tests.length));
-
-        return () => {
-            unsubscribeRecs();
-            unsubscribeVisons();
-            unsubscribeTests();
+                const resLikes = await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-likes");
+                const dataLikes = await resLikes.json();
+                setRecommendationCount(dataLikes.count);
+            } catch (err) {
+                console.error("Failed to fetch stats", err);
+            }
         };
+        fetchStats();
     }, []);
 
     const handleLike = async () => {
         try {
-            const fp = getOrCreateFingerprint();
-            await incrementRecommendations(fp);
+            setRecommendationCount(prev => prev + 1);
+            await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-likes/up");
             
             // Trigger confetti
             confetti({
@@ -51,11 +49,8 @@ export function Overview() {
                 origin: { y: 0.6 },
                 colors: ['#ef4444', '#ec4899', '#8b5cf6']
             });
-        } catch (error: any) {
-            if (error.message === "USER_ALREADY_RECOMMENDED") {
-                // Subtle shake or visual feedback could go here
-                console.log("Already liked!");
-            }
+        } catch (error) {
+            console.error("Error updating likes", error);
         }
     };
 

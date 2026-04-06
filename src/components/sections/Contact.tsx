@@ -25,13 +25,21 @@ export function Contact() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setStatus("loading");
+    
+    // Fallback: Open mailto link since Firebase requires backend setup
     try {
-      await submitContactMessage(formData);
-      setStatus("success");
-      setFormData({ email: "", role: "", message: "" });
+        const subject = encodeURIComponent(`Portfolio Contact: ${formData.role}`);
+        const body = encodeURIComponent(`From: ${formData.email}\n\nMessage:\n${formData.message}`);
+        window.location.href = `mailto:harikeshwaran.palani@gmail.com?subject=${subject}&body=${body}`;
+        
+        setStatus("success");
+        setTimeout(() => {
+            setStatus("idle");
+            setFormData({ email: "", role: "", message: "" });
+        }, 3000);
     } catch (error) {
-      console.error(error);
-      setStatus("error");
+        console.error(error);
+        setStatus("error");
     }
   };
 
@@ -140,7 +148,7 @@ export function Contact() {
             )}
             {status !== "error" && (
                 <p className="text-center text-sm text-gray-500 mt-4">
-                  Messages are sent directly to my database and I will be notified.
+                  This form will directly open your default email client to send me a message.
                 </p>
             )}
           </form>
