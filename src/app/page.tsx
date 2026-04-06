@@ -6,6 +6,7 @@ import { Projects } from "@/components/sections/Projects";
 import { Certifications } from "@/components/sections/Certifications";
 import { Recommendations } from "@/components/sections/Recommendations";
 import { FooterStats } from "@/components/FooterStats";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -15,14 +16,16 @@ export default function Home() {
       <Skills />
       <Experience />
       <Projects />
+
       <Certifications />
       <Recommendations />
+      <Contact />
 
       {/* Simple Footer directly in page */}
-      <footer className="bg-white/40 backdrop-blur-md border-t border-gray-100 py-12 mt-12 w-full">
+      <footer className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border-t border-gray-100 dark:border-gray-800 py-12 mt-12 w-full">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
           <FooterStats />
-          <p className="text-gray-500 text-sm font-medium mt-6">
+          <p className="text-gray-500 dark:text-gray-400 text-sm font-medium mt-6 text-center">
             © {new Date().getFullYear()} Harikeshwaran PALANI. Built with Next.js & Tailwind CSS.
           </p>
         </div>

@@ -10,43 +10,62 @@ export function FooterStats() {
     const [views, setViews] = useState(0);
 
     useEffect(() => {
-        // Simulate fetching views and likes from a backend
-        // For this demonstration, we use localStorage to persist fake counters
-
         // -- View Counter Logic --
-        const storedViews = localStorage.getItem("portfolio_views_v2");
-        const hasVisited = sessionStorage.getItem("has_visited_portfolio_v2");
-
-        let currentViews = storedViews ? parseInt(storedViews, 10) : 0; // Starts at 0
-
-        if (!hasVisited) {
-            currentViews += 1;
-            localStorage.setItem("portfolio_views_v2", currentViews.toString());
-            sessionStorage.setItem("has_visited_portfolio_v2", "true");
-        }
-        setViews(currentViews);
+        const checkViews = async () => {
+            try {
+                const hasVisited = localStorage.getItem("has_visited_global_v1");
+                if (!hasVisited) {
+                    const res = await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-views/up");
+                    const data = await res.json();
+                    setViews(data.count);
+                    localStorage.setItem("has_visited_global_v1", "true");
+                } else {
+                    const res = await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-views");
+                    const data = await res.json();
+                    setViews(data.count);
+                }
+            } catch (err) {
+                console.error("Failed to fetch views", err);
+            }
+        };
 
         // -- Like Counter Logic --
-        const storedLikes = localStorage.getItem("portfolio_likes_count_v2");
-        const userLiked = localStorage.getItem("portfolio_user_liked_v2") === "true";
+        const fetchLikes = async () => {
+            try {
+                const res = await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-likes");
+                const data = await res.json();
+                setLikes(data.count);
+            } catch (err) {
+                console.error("Failed to fetch likes", err);
+            }
+        };
 
-        setLikes(storedLikes ? parseInt(storedLikes, 10) : 0);
-        setIsLiked(userLiked);
+        checkViews();
+        fetchLikes();
+        
+        setIsLiked(localStorage.getItem("portfolio_user_liked_global_v1") === "true");
     }, []);
 
-    const handleLike = () => {
-        let newLikes = likes;
-        if (isLiked) {
-            newLikes -= 1;
-            setIsLiked(false);
-            localStorage.setItem("portfolio_user_liked_v2", "false");
-        } else {
-            newLikes += 1;
-            setIsLiked(true);
-            localStorage.setItem("portfolio_user_liked_v2", "true");
+    const handleLike = async () => {
+        const currentlyLiked = isLiked;
+        setIsLiked(!currentlyLiked); // Optimistic UI update
+        
+        try {
+            if (currentlyLiked) {
+                setLikes(prev => Math.max(0, prev - 1));
+                localStorage.setItem("portfolio_user_liked_global_v1", "false");
+                await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-likes/down");
+            } else {
+                setLikes(prev => prev + 1);
+                localStorage.setItem("portfolio_user_liked_global_v1", "true");
+                await fetch("https://api.counterapi.dev/v1/harikesh-portfolio/global-likes/up");
+            }
+        } catch (err) {
+            console.error("Failed to update likes", err);
+            // Revert optimistic update on failure
+            setIsLiked(currentlyLiked);
+            setLikes(prev => currentlyLiked ? prev + 1 : Math.max(0, prev - 1));
         }
-        setLikes(newLikes);
-        localStorage.setItem("portfolio_likes_count_v2", newLikes.toString());
     };
 
     return (
